@@ -67,4 +67,3 @@ C:\workspace\IdentityServer4-adventures\src\IdentityServer\obj\Debug\netcoreapp3
 C:\workspace\IdentityServer4-adventures\src\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.Views.pdb
 C:\workspace\IdentityServer4-adventures\src\IdentityServer\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll
 C:\workspace\IdentityServer4-adventures\src\IdentityServer\bin\Debug\netcoreapp3.1\AspNet.Security.OAuth.Salesforce.dll
-C:\workspace\IdentityServer4-adventures\src\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.csprojAssemblyReference.cache

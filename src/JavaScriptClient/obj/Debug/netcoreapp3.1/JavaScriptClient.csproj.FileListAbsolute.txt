@@ -19,4 +19,3 @@ C:\workspace\IdentityServer4-adventures\src\JavaScriptClient\obj\Debug\netcoreap
 C:\workspace\IdentityServer4-adventures\src\JavaScriptClient\obj\Debug\netcoreapp3.1\JavaScriptClient.dll
 C:\workspace\IdentityServer4-adventures\src\JavaScriptClient\obj\Debug\netcoreapp3.1\JavaScriptClient.pdb
 C:\workspace\IdentityServer4-adventures\src\JavaScriptClient\obj\Debug\netcoreapp3.1\JavaScriptClient.genruntimeconfig.cache
-C:\workspace\IdentityServer4-adventures\src\JavaScriptClient\obj\Debug\netcoreapp3.1\JavaScriptClient.csprojAssemblyReference.cache
