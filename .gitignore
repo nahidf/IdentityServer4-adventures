@@ -214,3 +214,4 @@ FakesAssemblies/
 bin
 obj
 bin
+node_modules
