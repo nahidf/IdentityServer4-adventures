@@ -1,0 +1,16 @@
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\bin\Debug\netcoreapp3.1\ConsoleClient.exe
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\bin\Debug\netcoreapp3.1\ConsoleClient.deps.json
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\bin\Debug\netcoreapp3.1\ConsoleClient.runtimeconfig.json
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\bin\Debug\netcoreapp3.1\ConsoleClient.runtimeconfig.dev.json
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\bin\Debug\netcoreapp3.1\ConsoleClient.dll
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\bin\Debug\netcoreapp3.1\ConsoleClient.pdb
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\obj\Debug\netcoreapp3.1\ConsoleClient.csproj.CoreCompileInputs.cache
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\obj\Debug\netcoreapp3.1\ConsoleClient.AssemblyInfoInputs.cache
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\obj\Debug\netcoreapp3.1\ConsoleClient.AssemblyInfo.cs
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\obj\Debug\netcoreapp3.1\ConsoleClient.dll
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\obj\Debug\netcoreapp3.1\ConsoleClient.pdb
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\obj\Debug\netcoreapp3.1\ConsoleClient.genruntimeconfig.cache
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\bin\Debug\netcoreapp3.1\IdentityModel.dll
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\obj\Debug\netcoreapp3.1\ConsoleClient.csproj.CopyComplete
+C:\workspace\IdentityServer4-adventures\src\ConsoleClient\obj\Debug\netcoreapp3.1\ConsoleClient.csprojAssemblyReference.cache
