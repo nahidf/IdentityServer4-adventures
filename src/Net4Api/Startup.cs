@@ -5,8 +5,11 @@ using System.Web.Http;
 using IdentityServer3.AccessTokenValidation;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
+using Microsoft.Owin.Logging;
 using Microsoft.Owin.Security.Jwt;
 using Microsoft.Owin.Security.OAuth;
+using NLog;
+using NLog.Owin.Logging;
 using Owin;
 
 [assembly: OwinStartup(typeof(Net4Api.Startup))]
@@ -21,9 +24,11 @@ namespace Net4Api
             app.UseIdentityServerBearerTokenAuthentication(
                 new IdentityServerBearerTokenAuthenticationOptions
                 {
-                    Authority = "https://demo.identityserver.io/",//"http://localhost:5000",
+                    Authority = "http://localhost:5000",
                     ValidationMode = ValidationMode.Local,
-                    RequiredScopes = new[] { "api2" }
+                    RequiredScopes = new[] { "api2" },
+                    ClientSecret = "secret3",
+                    ClientId = "api2"
                 });
 
             //configure web api
@@ -38,6 +43,8 @@ namespace Net4Api
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             app.UseCors(CorsOptions.AllowAll);
+
+            app.UseNLog((eventType) => LogLevel.Debug);
 
             app.UseWebApi(config);
         }

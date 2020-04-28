@@ -25,7 +25,12 @@ namespace IdentityServer
             // uncomment, if you want to add an MVC-based UI
             services.AddControllersWithViews();
 
-            var builder = services.AddIdentityServer()
+            var builder = services.AddIdentityServer(                
+                options =>
+                {
+                    options.AccessTokenJwtType = "JWT";
+                    options.EmitLegacyResourceAudienceClaim = true;
+                })
                 .AddInMemoryIdentityResources(Config.Ids)
                 .AddInMemoryApiResources(Config.Apis)
                 .AddInMemoryClients(Config.Clients)
@@ -33,7 +38,6 @@ namespace IdentityServer
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
-
 
             services.AddAuthentication()
                 .AddGoogle("Google", 

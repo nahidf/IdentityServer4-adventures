@@ -22,6 +22,12 @@ namespace IdentityServer
             {
                 new ApiResource("api1", "My DotNet Core API"),
                 new ApiResource("api2", "My DotNet 4.5 API")
+                {
+                    ApiSecrets = new Secret[]
+                    {
+                        new Secret("secret3".Sha256())
+                    }
+                }
             };
         
         public static IEnumerable<Client> Clients =>

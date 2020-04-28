@@ -54,13 +54,36 @@ namespace MvcClient.Controllers
             if (!response.IsSuccessStatusCode)
             {
                 content = await response.Content.ReadAsStringAsync();
+                ViewBag.Json = content;
             }
             else
             {
                 content = await response.Content.ReadAsStringAsync();
+                ViewBag.Json = JArray.Parse(content).ToString();
+            }
+            
+            return View("Json");
+        }
+
+        public async Task<IActionResult> CallNetApi()
+        {
+            var accessToken = await HttpContext.GetTokenAsync("access_token");
+
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var response = await client.GetAsync("http://localhost:5004/identity");
+            string content;
+            if (!response.IsSuccessStatusCode)
+            {
+                content = await response.Content.ReadAsStringAsync();
+                ViewBag.Json = content;
+            }
+            else
+            {
+                content = await response.Content.ReadAsStringAsync();
+                ViewBag.Json = JArray.Parse(content).ToString();
             }
 
-            ViewBag.Json = JArray.Parse(content).ToString();
             return View("Json");
         }
     }

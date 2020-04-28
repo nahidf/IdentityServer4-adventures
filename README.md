@@ -3,7 +3,7 @@
 This repo contains samples and prototypes for IdentityServer4 based on [docs](https://identityserver4.readthedocs.io/) 
 
 ## Projects
-All projects are built against the latest ASP.NET Core 3.
+All projects except Net4Api are built against the latest ASP.NET Core 3, Net4Api using .NET 4.5.2.
 
 * IdentityServer: IdentityServer4 instance 
 * ConsoleClient: Console app calling IdentityServer to get access_token using Client Credentials Grant, calls the Api using the token 
