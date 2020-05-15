@@ -88,7 +88,25 @@ namespace IdentityServer
                         },
 
                     AllowedScopes = {"openid", "profile", "offline_access", "api1", "api2" },
-                }
+                },
+                new Client
+                {
+                    ClientName = ".NET 4 MVC website",
+                    ClientId = "net4mvcclient",
+                    ClientSecrets =
+                    {
+                        new Secret("secret3".Sha256())
+                    },
+
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    RequireConsent = false,
+                    AllowOfflineAccess = true,
+
+                    RedirectUris = { "http://localhost:49816/signin-oidc" },
+                    PostLogoutRedirectUris = { "http://localhost:49816/signout-callback-oidc" },
+
+                    AllowedScopes = {"openid", "profile", "offline_access", "api1", "api2" }
+                },
             };
     }
 }
