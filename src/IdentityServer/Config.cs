@@ -103,7 +103,8 @@ namespace IdentityServer
                     AllowOfflineAccess = true,
 
                     RedirectUris = { "http://localhost:49816/signin-oidc" },
-                    PostLogoutRedirectUris = { "http://localhost:49816/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "http://localhost:49816" },
+                    
 
                     AllowedScopes = {"openid", "profile", "offline_access", "api1", "api2" }
                 },

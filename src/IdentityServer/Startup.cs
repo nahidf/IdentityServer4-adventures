@@ -57,6 +57,17 @@ namespace IdentityServer
                         options.ClientSecret = "C8C63BFBF4BF5132674F7CB585C770006C4D7C26B972E4940F54A187923A9D8E";
                     });
 
+            // uncomment if you want to have login UI in spa
+            //services.AddCors(options => {
+            //    options.AddPolicy("default", policy =>
+            //    {
+            //        policy.WithOrigins("http://localhost:5001")
+            //            .AllowAnyHeader()
+            //            .AllowAnyMethod()
+            //            .AllowCredentials();
+            //    });
+            //});
+
         }
 
         public void Configure(IApplicationBuilder app)
@@ -66,13 +77,14 @@ namespace IdentityServer
                 app.UseDeveloperExceptionPage();
             }
 
-            // uncomment if you want to add MVC
+            // uncomment if you want to have login UI in spa
+            //app.UseCors("default");
+
             app.UseStaticFiles();
             app.UseRouting();
 
             app.UseIdentityServer();
 
-            // uncomment, if you want to add MVC
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
