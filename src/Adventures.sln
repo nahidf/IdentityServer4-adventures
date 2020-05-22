@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net4Api", "Net4Api\Net4Api.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net4MvcClient", "Net4MvcClient\Net4MvcClient.csproj", "{68C4D65F-9576-4926-92C0-A4A4FBB9BDDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorClient", "RazorClient\RazorClient.csproj", "{9D0A5DE9-867E-45C5-A552-3C627A2952FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{68C4D65F-9576-4926-92C0-A4A4FBB9BDDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68C4D65F-9576-4926-92C0-A4A4FBB9BDDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68C4D65F-9576-4926-92C0-A4A4FBB9BDDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D0A5DE9-867E-45C5-A552-3C627A2952FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D0A5DE9-867E-45C5-A552-3C627A2952FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D0A5DE9-867E-45C5-A552-3C627A2952FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D0A5DE9-867E-45C5-A552-3C627A2952FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{C8EFBCD3-7D3A-4814-BECA-7E4196C376DF} = {4AA1641B-D3B7-463D-942D-5B3474ED49B2}
 		{5CE88005-BBA6-4AB9-A1B0-9AD35F6C997A} = {928673D8-1AD5-481D-AB93-D768B7D9B8B7}
 		{68C4D65F-9576-4926-92C0-A4A4FBB9BDDA} = {4AA1641B-D3B7-463D-942D-5B3474ED49B2}
+		{9D0A5DE9-867E-45C5-A552-3C627A2952FC} = {4AA1641B-D3B7-463D-942D-5B3474ED49B2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E3BF2971-749F-4C15-845D-A1A2B7664768}

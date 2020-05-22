@@ -108,6 +108,41 @@ namespace IdentityServer
 
                     AllowedScopes = {"openid", "profile", "offline_access", "api1", "api2" }
                 },
+                new Client
+                {
+                    ClientName = ".NET 4 MVC website - external",
+                    ClientId = "net4mvcclientexternal",
+                    ClientSecrets =
+                    {
+                        new Secret("secret4".Sha256())
+                    },
+
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    RequireConsent = false,
+                    AllowOfflineAccess = true,
+
+                    RedirectUris = { "http://localhost:44319/signin-oidc" },
+                    PostLogoutRedirectUris = { "http://localhost:44319" },
+
+
+                    AllowedScopes = {"openid", "profile", "offline_access", "api1", "api2" }
+                },
+                new Client
+                {
+                    ClientId = "razorappclient",
+                    ClientName = "Razor Client",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+
+                    RedirectUris = { "http://localhost:5005/signin-oidc" },
+                    PostLogoutRedirectUris = { "http://localhost:5005/signout-callback-oidc" },
+
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                    }
+                }
             };
     }
 }

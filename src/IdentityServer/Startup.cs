@@ -58,15 +58,16 @@ namespace IdentityServer
                     });
 
             // uncomment if you want to have login UI in spa
-            //services.AddCors(options => {
-            //    options.AddPolicy("default", policy =>
-            //    {
-            //        policy.WithOrigins("http://localhost:5001")
-            //            .AllowAnyHeader()
-            //            .AllowAnyMethod()
-            //            .AllowCredentials();
-            //    });
-            //});
+            services.AddCors(options =>
+            {
+                options.AddPolicy("default", policy =>
+                {
+                    policy.WithOrigins("http://localhost:5001")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+                });
+            });
 
         }
 
