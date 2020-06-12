@@ -36,13 +36,19 @@ namespace Net4MvcClient
                 ResponseType = "id_token",
                 RequireHttpsMetadata = false,
 
-                SignInAsAuthenticationType = "Cookies",
+                TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    NameClaimType = "name"
+                },
+
+                SignInAsAuthenticationType = "Cookies",                
 
                 Notifications = new OpenIdConnectAuthenticationNotifications
                 {
                     SecurityTokenValidated = n =>
                     {
                         n.AuthenticationTicket.Identity.AddClaim(new Claim("id_token", n.ProtocolMessage.IdToken));
+                        
                         return Task.FromResult(0);
                     },
                     RedirectToIdentityProvider = n =>

@@ -1,0 +1,17 @@
+﻿@model System.Security.Claims.ClaimsPrincipal
+
+@{
+    ViewBag.Title = "Authorized";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+<dt>User: @Model.Identity.Name</dt>
+<dl>    
+    @foreach (var claim in Model.Claims)
+    {
+        <dt>@claim.Type</dt>
+        <dd>@claim.Value</dd>
+    }
+</dl>
