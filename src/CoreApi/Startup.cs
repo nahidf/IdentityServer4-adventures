@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CoreApi
 {
@@ -18,12 +20,19 @@ namespace CoreApi
         {
             services.AddControllers();
 
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
             services.AddAuthentication("Bearer").AddJwtBearer("Bearer",
                 options =>
                 {
                     options.Authority = "http://localhost:5000";
                     options.Audience = "api1";
                     options.RequireHttpsMetadata = false;
+
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        NameClaimType = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"//To set Identity.Name 
+                    };
                 });
 
             services.AddCors(options =>
