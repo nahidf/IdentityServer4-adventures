@@ -33,7 +33,7 @@ namespace Net4MvcClient
                 RedirectUri = "http://localhost:49816/signin-oidc",//Net4MvcClient's URL
                 
                 PostLogoutRedirectUri = "http://localhost:49816",
-                ResponseType = "id_token",
+                ResponseType = "id_token token",
                 RequireHttpsMetadata = false,
 
                 TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
@@ -47,6 +47,7 @@ namespace Net4MvcClient
                 {
                     SecurityTokenValidated = n =>
                     {
+                        n.AuthenticationTicket.Identity.AddClaim(new Claim("access_token", n.ProtocolMessage.AccessToken));
                         n.AuthenticationTicket.Identity.AddClaim(new Claim("id_token", n.ProtocolMessage.IdToken));
                         
                         return Task.FromResult(0);

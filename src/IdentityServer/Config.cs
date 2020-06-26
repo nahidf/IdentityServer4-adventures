@@ -101,6 +101,7 @@ namespace IdentityServer
                     AllowedGrantTypes = GrantTypes.Implicit,
                     RequireConsent = false,
                     AllowOfflineAccess = true,
+                    AllowAccessTokensViaBrowser = true,
 
                     RedirectUris = { "http://localhost:49816/signin-oidc" },
                     PostLogoutRedirectUris = { "http://localhost:49816" },
