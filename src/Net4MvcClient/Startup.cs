@@ -36,6 +36,8 @@ namespace Net4MvcClient
                 ResponseType = "id_token token",
                 RequireHttpsMetadata = false,
 
+                Scope = "openid profile api1",
+
                 TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                 {
                     NameClaimType = "name"

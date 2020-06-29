@@ -210,6 +210,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Unauthorized.cshtml" />
     <Content Include="Views\Home\Authorized.cshtml" />
+    <Content Include="Views\Home\Json.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
