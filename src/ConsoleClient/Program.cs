@@ -14,7 +14,7 @@ namespace ConsoleClient
 
             await GetTokenAndCallNet4ApiAsync();
 
-            await GetTokenAndCallApiAsync();
+            //await GetTokenAndCallApiAsync();
         }
 
         public static async Task GetTokenAndCallNet4ApiAsync()
@@ -34,7 +34,7 @@ namespace ConsoleClient
 
                 ClientId = "consoleclient",
                 ClientSecret = "secret1",
-                Scope = "api2"
+                Scope = "api2.all"
             });
 
             if (tokenResponse.IsError)
@@ -47,7 +47,7 @@ namespace ConsoleClient
 
             // call api
             var apiClient = new HttpClient();
-            //apiClient.SetBearerToken(tokenResponse.AccessToken);
+            apiClient.SetBearerToken(tokenResponse.AccessToken);
 
             var response = await apiClient.GetAsync("http://localhost:5004/identity");
             if (!response.IsSuccessStatusCode)
@@ -84,7 +84,7 @@ namespace ConsoleClient
 
                 ClientId = "consoleclient",
                 ClientSecret = "secret1",
-                Scope = "api1 api2"
+                Scope = "api1.custom api2.all"
             });
 
             if (tokenResponse.IsError)
@@ -99,11 +99,12 @@ namespace ConsoleClient
             var apiClient = new HttpClient();
             apiClient.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = await apiClient.GetAsync("http://localhost:5001/identity");
+            var response = await apiClient.GetAsync("http://localhost:5001/identity/custom");
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine(response.StatusCode);
-                Console.WriteLine(await response.Content.ReadAsStringAsync());
+                var error = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(error);
             }
             else
             {

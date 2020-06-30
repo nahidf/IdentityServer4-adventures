@@ -1,16 +1,11 @@
-﻿using System;
-using System.Configuration;
-using System.IdentityModel.Tokens;
-using System.Web.Http;
-using IdentityServer3.AccessTokenValidation;
+﻿using IdentityServer3.AccessTokenValidation;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
-using Microsoft.Owin.Logging;
-using Microsoft.Owin.Security.Jwt;
-using Microsoft.Owin.Security.OAuth;
 using NLog;
 using NLog.Owin.Logging;
 using Owin;
+using System.IdentityModel.Tokens;
+using System.Web.Http;
 
 [assembly: OwinStartup(typeof(Net4Api.Startup))]
 namespace Net4Api
@@ -26,7 +21,7 @@ namespace Net4Api
                 {
                     Authority = "http://localhost:5000",
                     ValidationMode = ValidationMode.Local,
-                    RequiredScopes = new[] { "api2" },
+                    RequiredScopes = new[] { "api2.all" },
                     ClientSecret = "secret3",
                     ClientId = "api2"
                 });

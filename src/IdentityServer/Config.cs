@@ -10,28 +10,40 @@ namespace IdentityServer
 {
     public static class Config
     {
-        public static IEnumerable<IdentityResource> Ids =>
+        public static IEnumerable<IdentityResource> IdentityResources =>
             new IdentityResource[]
             { 
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile()
             };
 
-        public static IEnumerable<ApiResource> Apis =>
-            new ApiResource[] 
+        public static IEnumerable<ApiScope> ApiScopes =>
+            new ApiScope[]
+            { 
+                new ApiScope("api1.all"),
+                new ApiScope("api1.custom"),
+                new ApiScope("api2.all"),
+            };
+
+        public static IEnumerable<ApiResource> ApiResources =>
+            new ApiResource[]
             {
-                new ApiResource("api1", "My DotNet Core API"),
+                new ApiResource("api1", "My DotNet Core API")
+                {
+                    Scopes = { "api1.all", "api1.custom" }
+                },
                 new ApiResource("api2", "My DotNet 4.5 API")
                 {
+                    Scopes = { "api2.all" },
                     ApiSecrets = new Secret[]
                     {
                         new Secret("secret3".Sha256())
                     }
                 }
             };
-        
+
         public static IEnumerable<Client> Clients =>
-            new Client[] 
+            new Client[]
             {
                 new Client
                 {
@@ -48,7 +60,7 @@ namespace IdentityServer
                     },
 
                     // scopes that client has access to
-                    AllowedScopes = { "api1", "api2" }
+                    AllowedScopes = { "api1.all", "api1.custom", "api2.all" }
                 },
                 new Client
                 {
@@ -68,7 +80,7 @@ namespace IdentityServer
                     RedirectUris = { "http://localhost:5002/signin-oidc" },
                     PostLogoutRedirectUris = { "http://localhost:5002/signout-callback-oidc" },
 
-                    AllowedScopes = {"openid", "profile", "offline_access", "api1", "api2" },
+                    AllowedScopes = {"openid", "profile", "offline_access", "api1.all", "api1.custom", "api2.all" },
 
                     AllowOfflineAccess = true,
                 },
@@ -83,11 +95,11 @@ namespace IdentityServer
                     RedirectUris =  { "http://localhost:5003/callback.html" },
                     PostLogoutRedirectUris = { "http://localhost:5003/index.html" },
                     AllowedCorsOrigins =
-                        { 
-                            "http://localhost:5003" 
+                        {
+                            "http://localhost:5003"
                         },
 
-                    AllowedScopes = {"openid", "profile", "offline_access", "api1", "api2" },
+                    AllowedScopes = {"openid", "profile", "offline_access", "api1.all", "api1.custom", "api2.all" },
                 },
                 new Client
                 {
@@ -105,9 +117,9 @@ namespace IdentityServer
 
                     RedirectUris = { "http://localhost:49816/signin-oidc" },
                     PostLogoutRedirectUris = { "http://localhost:49816" },
-                    
 
-                    AllowedScopes = {"openid", "profile", "offline_access", "api1", "api2" }
+
+                    AllowedScopes = {"openid", "profile", "offline_access", "api1.all", "api1.custom", "api2.all" }
                 },
                 new Client
                 {
@@ -126,7 +138,7 @@ namespace IdentityServer
                     PostLogoutRedirectUris = { "http://localhost:44319" },
 
 
-                    AllowedScopes = {"openid", "profile", "offline_access", "api1", "api2" }
+                    AllowedScopes = {"openid", "profile", "offline_access", "api1.all", "api1.custom", "api2.all" }
                 },
                 new Client
                 {

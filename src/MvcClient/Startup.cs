@@ -45,8 +45,8 @@ namespace MvcClient
 
                 options.SaveTokens = true;
 
-                options.Scope.Add("api1");
-                options.Scope.Add("api2");
+                options.Scope.Add("api1.all");
+                options.Scope.Add("api2.all");
                 options.Scope.Add("offline_access");
 
                 options.GetClaimsFromUserInfoEndpoint = true;
