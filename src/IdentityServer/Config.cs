@@ -14,7 +14,8 @@ namespace IdentityServer
             new IdentityResource[]
             { 
                 new IdentityResources.OpenId(),
-                new IdentityResources.Profile()
+                new IdentityResources.Profile(),
+                new IdentityServer4.Models.IdentityResources.Email(),
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
@@ -155,6 +156,30 @@ namespace IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
                     }
+                },
+                new Client
+                {
+                    ClientId = "password-client",
+                    ClientName = "Password Client",
+                    ClientSecrets =
+                    {
+                        new Secret("secret41".Sha256())
+                    },
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
+                    AllowedScopes = {"openid", "profile", "offline_access", "email", "api1.all", "api1.custom", "api2.all" },
+
+                    AccessTokenType = AccessTokenType.Jwt,
+                    AccessTokenLifetime = 3600,
+                    IdentityTokenLifetime = 3600,
+                    UpdateAccessTokenClaimsOnRefresh = false,
+                    SlidingRefreshTokenLifetime = 30,
+                   
+                    RefreshTokenExpiration = TokenExpiration.Absolute,
+                    RefreshTokenUsage = TokenUsage.OneTimeOnly,
+
+                    AlwaysSendClientClaims = true,
+                    Enabled = true,
+                    AllowOfflineAccess = true,
                 }
             };
     }
