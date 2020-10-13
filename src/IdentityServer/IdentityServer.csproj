@@ -5,11 +5,11 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="IdentityServer4" Version="4.0.1" />
+    <PackageReference Include="IdentityServer4" Version="4.1.1" />
 
-    <PackageReference Include="AspNet.Security.OAuth.Salesforce" Version="3.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.5" />
+    <PackageReference Include="AspNet.Security.OAuth.Salesforce" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.8" />
     
-    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
   </ItemGroup>
 </Project>

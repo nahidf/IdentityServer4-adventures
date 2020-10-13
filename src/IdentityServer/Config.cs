@@ -15,27 +15,28 @@ namespace IdentityServer
             { 
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-                new IdentityServer4.Models.IdentityResources.Email(),
+                new IdentityResources.Email(),
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             { 
-                new ApiScope("api1.all"),
-                new ApiScope("api1.custom"),
-                new ApiScope("api2.all"),
+                new ApiScope("order.read"),
+                new ApiScope("order.write"),
+                new ApiScope("order.delete"),
+                new ApiScope("invoice.read"),
             };
 
         public static IEnumerable<ApiResource> ApiResources =>
             new ApiResource[]
             {
-                new ApiResource("api1", "My DotNet Core API")
+                new ApiResource("order", "My DotNet Core API")
                 {
-                    Scopes = { "api1.all", "api1.custom" }
+                    Scopes = { "order.read", "order.write", "order.delete" }
                 },
-                new ApiResource("api2", "My DotNet 4.5 API")
+                new ApiResource("invoice", "My DotNet 4.5 API")
                 {
-                    Scopes = { "api2.all" },
+                    Scopes = { "invoice.read" },
                     ApiSecrets = new Secret[]
                     {
                         new Secret("secret3".Sha256())
@@ -61,7 +62,7 @@ namespace IdentityServer
                     },
 
                     // scopes that client has access to
-                    AllowedScopes = { "api1.all", "api1.custom", "api2.all" }
+                    AllowedScopes = { "order.read", "order.write", "order.delete", "invoice.read" }
                 },
                 new Client
                 {
@@ -78,10 +79,10 @@ namespace IdentityServer
                     RequireConsent = false,
                     RequirePkce = true,
 
-                    RedirectUris = { "http://localhost:5002/signin-oidc" },
-                    PostLogoutRedirectUris = { "http://localhost:5002/signout-callback-oidc" },
+                    RedirectUris = { "https://localhost:5012/signin-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:5012/signout-callback-oidc" },
 
-                    AllowedScopes = {"openid", "profile", "offline_access", "api1.all", "api1.custom", "api2.all" },
+                    AllowedScopes = {"openid", "profile", "offline_access", "order.read", "order.write", "order.delete", "invoice.read" },
 
                     AllowOfflineAccess = true,
                 },
@@ -93,14 +94,14 @@ namespace IdentityServer
                     RequirePkce = true,
                     RequireClientSecret = false,
 
-                    RedirectUris =  { "http://localhost:5003/callback.html" },
-                    PostLogoutRedirectUris = { "http://localhost:5003/index.html" },
+                    RedirectUris =  { "https://localhost:5013/callback.html" },
+                    PostLogoutRedirectUris = { "https://localhost:5013/index.html" },
                     AllowedCorsOrigins =
                         {
-                            "http://localhost:5003"
+                            "https://localhost:5013"
                         },
 
-                    AllowedScopes = {"openid", "profile", "offline_access", "api1.all", "api1.custom", "api2.all" },
+                    AllowedScopes = {"openid", "profile", "offline_access", "order.read", "order.delete", "invoice.read" },
                 },
                 new Client
                 {
@@ -116,11 +117,11 @@ namespace IdentityServer
                     AllowOfflineAccess = true,
                     AllowAccessTokensViaBrowser = true,
 
-                    RedirectUris = { "http://localhost:49816/signin-oidc" },
-                    PostLogoutRedirectUris = { "http://localhost:49816" },
+                    RedirectUris = { "https://localhost:49816/signin-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:49816" },
 
 
-                    AllowedScopes = {"openid", "profile", "offline_access", "api1.all", "api1.custom", "api2.all" }
+                    AllowedScopes = {"openid", "profile", "offline_access", "order.read", "order.delete", "invoice.read" }
                 },
                 new Client
                 {
@@ -139,7 +140,7 @@ namespace IdentityServer
                     PostLogoutRedirectUris = { "http://localhost:44319" },
 
 
-                    AllowedScopes = {"openid", "profile", "offline_access", "api1.all", "api1.custom", "api2.all" }
+                    AllowedScopes = {"openid", "profile", "offline_access", "order.read", "order.delete", "invoice.read" }
                 },
                 new Client
                 {
@@ -147,8 +148,8 @@ namespace IdentityServer
                     ClientName = "Razor Client",
                     AllowedGrantTypes = GrantTypes.Implicit,
 
-                    RedirectUris = { "http://localhost:5005/signin-oidc" },
-                    PostLogoutRedirectUris = { "http://localhost:5005/signout-callback-oidc" },
+                    RedirectUris = { "https://localhost:5015/signin-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:5015/signout-callback-oidc" },
 
                     AllowedScopes =
                     {
@@ -166,7 +167,7 @@ namespace IdentityServer
                         new Secret("secret41".Sha256())
                     },
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
-                    AllowedScopes = {"openid", "profile", "offline_access", "email", "api1.all", "api1.custom", "api2.all" },
+                    AllowedScopes = {"openid", "profile", "offline_access", "email", "order.read", "order.delete", "invoice.read" },
 
                     AccessTokenType = AccessTokenType.Jwt,
                     AccessTokenLifetime = 3600,

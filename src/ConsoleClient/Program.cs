@@ -12,16 +12,18 @@ namespace ConsoleClient
         {
             Console.WriteLine("Hello World!");
 
-            await GetTokenAndCallNet4ApiAsync();
+            //await GetTokenAndCallNet4ApiAsync();
 
-            //await GetTokenAndCallApiAsync();
-        }
+            await GetTokenAndCallApiAsync();
 
-        public static async Task GetTokenAndCallNet4ApiAsync()
+            Console.ReadKey();
+        }       
+
+        public static async Task GetTokenAndCallApiAsync()
         {
             // discover endpoints from metadata
             var client = new HttpClient();
-            var disco = await client.GetDiscoveryDocumentAsync("http://localhost:5000");
+            var disco = await client.GetDiscoveryDocumentAsync("https://localhost:5001");
             if (disco.IsError)
             {
                 Console.WriteLine(disco.Error);
@@ -34,7 +36,7 @@ namespace ConsoleClient
 
                 ClientId = "consoleclient",
                 ClientSecret = "secret1",
-                Scope = "api2.all"
+                Scope = "order.delete invoice.read"
             });
 
             if (tokenResponse.IsError)
@@ -49,16 +51,12 @@ namespace ConsoleClient
             var apiClient = new HttpClient();
             apiClient.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = await apiClient.GetAsync("http://localhost:5004/identity");
+            var response = await apiClient.GetAsync("https://localhost:5011/identity/delete");
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine(response.StatusCode);
-                Console.WriteLine(await response.Content.ReadAsStringAsync());
-
-                Console.WriteLine("Calling Verify");
-                response = await apiClient.GetAsync("http://localhost:5004/verify");
-                Console.WriteLine(response.StatusCode);
-                Console.WriteLine(await response.Content.ReadAsStringAsync());
+                var error = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(error);
             }
             else
             {
@@ -67,11 +65,11 @@ namespace ConsoleClient
             }
         }
 
-        public static async Task GetTokenAndCallApiAsync()
+        public static async Task GetTokenAndCallNet4ApiAsync()
         {
             // discover endpoints from metadata
             var client = new HttpClient();
-            var disco = await client.GetDiscoveryDocumentAsync("http://localhost:5000");
+            var disco = await client.GetDiscoveryDocumentAsync("https://localhost:5001");
             if (disco.IsError)
             {
                 Console.WriteLine(disco.Error);
@@ -84,7 +82,7 @@ namespace ConsoleClient
 
                 ClientId = "consoleclient",
                 ClientSecret = "secret1",
-                Scope = "api1.custom api2.all"
+                Scope = "order.read"
             });
 
             if (tokenResponse.IsError)
@@ -99,12 +97,16 @@ namespace ConsoleClient
             var apiClient = new HttpClient();
             apiClient.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = await apiClient.GetAsync("http://localhost:5001/identity/custom");
+            var response = await apiClient.GetAsync("https://localhost:5014/identity");
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine(response.StatusCode);
-                var error = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(error);
+                Console.WriteLine(await response.Content.ReadAsStringAsync());
+
+                Console.WriteLine("Calling Verify");
+                response = await apiClient.GetAsync("https://localhost:5014/verify");
+                Console.WriteLine(response.StatusCode);
+                Console.WriteLine(await response.Content.ReadAsStringAsync());
             }
             else
             {

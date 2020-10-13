@@ -4,7 +4,7 @@
     "anonymousAuthentication": true, 
     "iisExpress": {
       "applicationUrl": "http://localhost:5003",
-      "sslPort": 0
+      "sslPort": 5013
     }
   },
   "profiles": {
@@ -18,7 +18,7 @@
     "JavaScriptClient": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5003",
+      "applicationUrl": "https://localhost:5013",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

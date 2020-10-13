@@ -15,8 +15,14 @@ namespace CoreApi.Controllers
             return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
         }
 
-        [HttpGet("custom"), Authorize("ApiCustomAccess")]
-        public IActionResult GetCustom()
+        [HttpGet("read"), Authorize("ReadAccessPolicy")]
+        public IActionResult GetRead()
+        {
+            return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
+        }
+
+        [HttpGet("delete"), Authorize("DeleteAccessPolicy")]
+        public IActionResult GetDelete()
         {
             return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
         }

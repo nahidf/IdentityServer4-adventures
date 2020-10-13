@@ -19,11 +19,11 @@ namespace Net4Api
             app.UseIdentityServerBearerTokenAuthentication(
                 new IdentityServerBearerTokenAuthenticationOptions
                 {
-                    Authority = "http://localhost:5000",
+                    Authority = "https://localhost:5001",
                     ValidationMode = ValidationMode.Local,
-                    RequiredScopes = new[] { "api2.all" },
+                    RequiredScopes = new[] { "invoice.read" },
                     ClientSecret = "secret3",
-                    ClientId = "api2"
+                    ClientId = "invoice"
                 });
 
             //configure web api

@@ -27,16 +27,16 @@ namespace Net4MvcClient
 
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
-                Authority = "http://localhost:5000",
+                Authority = "https://localhost:5001",
                 ClientId = "net4mvcclient",
                 ClientSecret = "secret3",
-                RedirectUri = "http://localhost:49816/signin-oidc",//Net4MvcClient's URL
+                RedirectUri = "http://localhosts:49816/signin-oidc",//Net4MvcClient's URL
                 
-                PostLogoutRedirectUri = "http://localhost:49816",
+                PostLogoutRedirectUri = "https://localhost:49816",
                 ResponseType = "id_token token",
                 RequireHttpsMetadata = false,
 
-                Scope = "openid profile api1.all api2.all",
+                Scope = "openid profile order.read invoice.read",
 
                 TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                 {

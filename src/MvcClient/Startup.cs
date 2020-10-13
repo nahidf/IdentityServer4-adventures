@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,8 +37,8 @@ namespace MvcClient
             .AddCookie("Cookies")
             .AddOpenIdConnect("oidc", options =>
             {
-                options.Authority = "http://localhost:5000";
-                options.RequireHttpsMetadata = false;
+                options.Authority = "https://localhost:5001";
+                //options.RequireHttpsMetadata = false;
 
                 options.ClientId = "mvcclient";
                 options.ClientSecret = "secret2";
@@ -45,8 +46,8 @@ namespace MvcClient
 
                 options.SaveTokens = true;
 
-                options.Scope.Add("api1.all");
-                options.Scope.Add("api2.all");
+                options.Scope.Add("order.read");
+                options.Scope.Add("invoice.read");
                 options.Scope.Add("offline_access");
 
                 options.GetClaimsFromUserInfoEndpoint = true;

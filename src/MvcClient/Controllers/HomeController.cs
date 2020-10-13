@@ -45,11 +45,12 @@ namespace MvcClient.Controllers
 
         public async Task<IActionResult> CallApi()
         {
+            var idToken = await HttpContext.GetTokenAsync("id_token");
             var accessToken = await HttpContext.GetTokenAsync("access_token");
 
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var response = await client.GetAsync("http://localhost:5001/identity");
+            var response = await client.GetAsync("https://localhost:5011/identity");
             var content = "";
             if (!response.IsSuccessStatusCode)
             {
@@ -71,7 +72,7 @@ namespace MvcClient.Controllers
 
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var response = await client.GetAsync("http://localhost:5004/identity");
+            var response = await client.GetAsync("https://localhost:5014/identity");
             string content;
             if (!response.IsSuccessStatusCode)
             {

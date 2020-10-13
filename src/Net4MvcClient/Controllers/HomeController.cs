@@ -36,7 +36,7 @@ namespace Net4MvcClient.Controllers
 
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var response = await client.GetAsync("http://localhost:5001/identity");
+            var response = await client.GetAsync("https://localhost:5011/identity");
             string content;
             if (!response.IsSuccessStatusCode)
             {

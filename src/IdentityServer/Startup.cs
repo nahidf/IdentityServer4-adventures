@@ -30,7 +30,7 @@ namespace IdentityServer
                 // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
                 options.EmitStaticAudienceClaim = true;
 
-                options.AccessTokenJwtType = "JWT";
+                //options.AccessTokenJwtType = "JWT";
             })
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
@@ -64,7 +64,7 @@ namespace IdentityServer
             //{
             //    options.AddPolicy("default", policy =>
             //    {
-            //        policy.WithOrigins("http://localhost:5001")
+            //        policy.WithOrigins("https://localhost:5011")
             //            .AllowAnyHeader()
             //            .AllowAnyMethod()
             //            .AllowCredentials();
