@@ -15,16 +15,45 @@ namespace CoreApi.Controllers
             return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
         }
 
-        [HttpGet("read"), Authorize("ReadAccessPolicy")]
-        public IActionResult GetRead()
+        [HttpGet("me"), Authorize]
+        public IActionResult GetMyIdentity()
+        {
+            if (User.Identity.Name == null)
+                return Forbid();
+
+            return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
+        }
+
+        [HttpGet("me/read-access"), Authorize("ReadAccessPolicy")]
+        public IActionResult GetMyIdentityByReadAccess()
+        {
+            if (User.Identity.Name == null)
+                return Forbid();
+
+            return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
+        }
+
+        [HttpGet("me/delete-access"), Authorize("DeleteAccessPolicy")]
+        public IActionResult GetMyIdentityByDeleteAccess()
+        {
+            if (User.Identity.Name == null)
+                return Forbid();
+
+            return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
+        }
+
+        [HttpGet("read-access"), Authorize("ReadAccessPolicy")]
+        public IActionResult GetByReadAccess()
         {
             return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
         }
 
-        [HttpGet("delete"), Authorize("DeleteAccessPolicy")]
-        public IActionResult GetDelete()
+        [HttpGet("delete-access"), Authorize("DeleteAccessPolicy")]
+        public IActionResult GetByDeleteAccess()
         {
             return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
         }
+
+       
     }
 }

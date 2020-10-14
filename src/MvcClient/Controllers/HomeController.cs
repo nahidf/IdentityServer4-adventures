@@ -43,19 +43,21 @@ namespace MvcClient.Controllers
             return SignOut("Cookies", "oidc");
         }
 
-        public async Task<IActionResult> CallApi()
+        public async Task<IActionResult> CallMyIdentityApi()
         {
             var idToken = await HttpContext.GetTokenAsync("id_token");
             var accessToken = await HttpContext.GetTokenAsync("access_token");
 
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var response = await client.GetAsync("https://localhost:5011/identity");
-            var content = "";
+            var response = await client.GetAsync("https://localhost:5011/identity/me");
+            string content;
             if (!response.IsSuccessStatusCode)
             {
                 content = await response.Content.ReadAsStringAsync();
-                ViewBag.Json = content;
+
+                string error = $"status: {response.StatusCode} reason: {response.ReasonPhrase} content: {content}";
+                ViewBag.Json = error;
             }
             else
             {
@@ -63,6 +65,31 @@ namespace MvcClient.Controllers
                 ViewBag.Json = JArray.Parse(content).ToString();
             }
             
+            return View("Json");
+        }
+
+        public async Task<IActionResult> CallMyIdentityDeleteAccessApi()
+        {
+            var idToken = await HttpContext.GetTokenAsync("id_token");
+            var accessToken = await HttpContext.GetTokenAsync("access_token");
+
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var response = await client.GetAsync("https://localhost:5011/identity/me/delete-access");
+            string content;
+            if (!response.IsSuccessStatusCode)
+            {
+                content = await response.Content.ReadAsStringAsync();
+
+                string error = $"status: {response.StatusCode} reason: {response.ReasonPhrase} content: {content}";
+                ViewBag.Json = error;
+            }
+            else
+            {
+                content = await response.Content.ReadAsStringAsync();
+                ViewBag.Json = JArray.Parse(content).ToString();
+            }
+
             return View("Json");
         }
 

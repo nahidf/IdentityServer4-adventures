@@ -47,6 +47,8 @@ namespace MvcClient
                 options.SaveTokens = true;
 
                 options.Scope.Add("order.read");
+                options.Scope.Add("order.write");
+                options.Scope.Add("order.delete");
                 options.Scope.Add("invoice.read");
                 options.Scope.Add("offline_access");
 

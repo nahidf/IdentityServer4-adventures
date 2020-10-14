@@ -76,7 +76,7 @@ namespace IdentityServer
 
                     // no interactive user, use the clientid/secret for authentication
                     AllowedGrantTypes = GrantTypes.Code,
-                    RequireConsent = false,
+                    RequireConsent = true,
                     RequirePkce = true,
 
                     RedirectUris = { "https://localhost:5012/signin-oidc" },
@@ -92,6 +92,7 @@ namespace IdentityServer
                     ClientName = "JavaScript Client",
                     AllowedGrantTypes = GrantTypes.Code,
                     RequirePkce = true,
+                    RequireConsent = true,
                     RequireClientSecret = false,
 
                     RedirectUris =  { "https://localhost:5013/callback.html" },
@@ -101,7 +102,7 @@ namespace IdentityServer
                             "https://localhost:5013"
                         },
 
-                    AllowedScopes = {"openid", "profile", "offline_access", "order.read", "order.delete", "invoice.read" },
+                    AllowedScopes = {"openid", "profile", "offline_access", "order.read", "order.write", "order.delete", "invoice.read" },
                 },
                 new Client
                 {
