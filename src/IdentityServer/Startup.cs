@@ -47,8 +47,8 @@ namespace IdentityServer
                     {
                         options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
 
-                        options.ClientId = "855494373025-c6554kbvibhqv2at9i4il80p5emn857t.apps.googleusercontent.com";
-                        options.ClientSecret = "3V6XZiQ8fyvur7zD0DFO_SjP";
+                        options.ClientId = "1001981917017-s0okfu79f78ocm7rhihej5ekb1eig4n8.apps.googleusercontent.com";
+                        options.ClientSecret = "mGZS-LW6whp4wYaYzltSoMo6";
                     })
                 .AddSalesforce(
                     options =>
