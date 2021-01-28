@@ -106,45 +106,6 @@ namespace IdentityServer
                 },
                 new Client
                 {
-                    ClientName = ".NET 4 MVC website",
-                    ClientId = "net4mvcclient",
-                    ClientSecrets =
-                    {
-                        new Secret("secret3".Sha256())
-                    },
-
-                    AllowedGrantTypes = GrantTypes.Implicit,
-                    RequireConsent = false,
-                    AllowOfflineAccess = true,
-                    AllowAccessTokensViaBrowser = true,
-
-                    RedirectUris = { "https://localhost:49816/signin-oidc" },
-                    PostLogoutRedirectUris = { "https://localhost:49816" },
-
-
-                    AllowedScopes = {"openid", "profile", "offline_access", "order.read", "order.delete", "invoice.read" }
-                },
-                new Client
-                {
-                    ClientName = ".NET 4 MVC website - external",
-                    ClientId = "net4mvcclientexternal",
-                    ClientSecrets =
-                    {
-                        new Secret("secret4".Sha256())
-                    },
-
-                    AllowedGrantTypes = GrantTypes.Implicit,
-                    RequireConsent = false,
-                    AllowOfflineAccess = true,
-
-                    RedirectUris = { "http://localhost:44319/signin-oidc" },
-                    PostLogoutRedirectUris = { "http://localhost:44319" },
-
-
-                    AllowedScopes = {"openid", "profile", "offline_access", "order.read", "order.delete", "invoice.read" }
-                },
-                new Client
-                {
                     ClientId = "razorappclient",
                     ClientName = "Razor Client",
                     AllowedGrantTypes = GrantTypes.Implicit,
@@ -161,27 +122,22 @@ namespace IdentityServer
                 },
                 new Client
                 {
-                    ClientId = "password-client",
-                    ClientName = "Password Client",
-                    ClientSecrets =
-                    {
-                        new Secret("secret41".Sha256())
-                    },
-                    AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
-                    AllowedScopes = {"openid", "profile", "offline_access", "email", "order.read", "order.delete", "invoice.read" },
-
-                    AccessTokenType = AccessTokenType.Jwt,
-                    AccessTokenLifetime = 3600,
-                    IdentityTokenLifetime = 3600,
-                    UpdateAccessTokenClaimsOnRefresh = false,
-                    SlidingRefreshTokenLifetime = 30,
-                   
-                    RefreshTokenExpiration = TokenExpiration.Absolute,
-                    RefreshTokenUsage = TokenUsage.OneTimeOnly,
-
-                    AlwaysSendClientClaims = true,
+                    ClientId = "razorpkceappclient",
+                    ClientName = "Razor Client PKCE",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = false,
                     Enabled = true,
-                    AllowOfflineAccess = true,
+
+                    RedirectUris = { "https://localhost:9001/signin-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:9001/signout-callback-oidc" },
+
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                    }
                 }
             };
     }

@@ -45,8 +45,9 @@ namespace RazorClient
 
                 options.Scope.Add("openid");
 
-                options.ClientId = "razorappclient";
+                options.ClientId = "razorpkceappclient";
                 options.SaveTokens = true;
+                options.ResponseType = "code";
             });
         }
 

@@ -8,7 +8,7 @@ namespace CoreApi.Controllers
     [ApiController]
 
     public class IdentityController : ControllerBase
-    {
+    {       
         [HttpGet, Authorize]
         public IActionResult Get()
         {

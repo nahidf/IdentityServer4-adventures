@@ -45,6 +45,7 @@ namespace MvcClient.Controllers
 
         public async Task<IActionResult> CallMyIdentityApi()
         {
+            var refreshToken = await HttpContext.GetTokenAsync("refresh_token");
             var idToken = await HttpContext.GetTokenAsync("id_token");
             var accessToken = await HttpContext.GetTokenAsync("access_token");
 
